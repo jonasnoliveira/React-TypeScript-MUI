@@ -1,9 +1,9 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 export const PageExit = () => {
   return (
-    <Box>
-      <h1>Exit</h1>
+    <Box padding={2}>
+      <Typography variant="h4">Exit</Typography>
     </Box>
   );
 };
