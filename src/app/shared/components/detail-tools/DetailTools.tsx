@@ -1,5 +1,12 @@
 import { Add, ArrowBack, Delete, Save } from '@mui/icons-material';
-import { Box, Button, Divider, Paper, useTheme } from '@mui/material';
+import {
+  Box,
+  Button,
+  Divider,
+  Paper,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { IDetailTools } from 'app/shared/interfaces';
 
 export const DetailTools: React.FC<IDetailTools> = ({
@@ -18,13 +25,14 @@ export const DetailTools: React.FC<IDetailTools> = ({
   clickingOnSaveAndClose,
 }) => {
   const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Box
       gap={1}
-      marginX={1}
+      marginX={smDown ? 0 : 1}
       paddingY={2}
-      paddingX={2}
+      paddingX={smDown ? 1 : 2}
       display="flex"
       alignItems="center"
       height={theme.spacing(5)}
@@ -35,6 +43,7 @@ export const DetailTools: React.FC<IDetailTools> = ({
           color="primary"
           disableElevation
           variant="contained"
+          size={smDown ? 'small' : 'medium'}
           onClick={whenClickingSave}
           startIcon={<Save />}
         >
@@ -45,7 +54,8 @@ export const DetailTools: React.FC<IDetailTools> = ({
         <Button
           color="primary"
           disableElevation
-          variant="contained"
+          variant="outlined"
+          size={smDown ? 'small' : 'medium'}
           onClick={clickingOnSaveAndClose}
           startIcon={<Save />}
         >
@@ -56,7 +66,8 @@ export const DetailTools: React.FC<IDetailTools> = ({
         <Button
           color="primary"
           disableElevation
-          variant="contained"
+          variant="outlined"
+          size={smDown ? 'small' : 'medium'}
           onClick={whenClickingDelete}
           startIcon={<Delete />}
         >
@@ -67,7 +78,8 @@ export const DetailTools: React.FC<IDetailTools> = ({
         <Button
           color="primary"
           disableElevation
-          variant="contained"
+          variant="outlined"
+          size={smDown ? 'small' : 'medium'}
           onClick={whenClickingOnNew}
           startIcon={<Add />}
         >
@@ -82,7 +94,8 @@ export const DetailTools: React.FC<IDetailTools> = ({
         <Button
           color="primary"
           disableElevation
-          variant="contained"
+          variant="outlined"
+          size={smDown ? 'small' : 'medium'}
           onClick={whenClickingBack}
           startIcon={<ArrowBack />}
         >
