@@ -1,9 +1,12 @@
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
+import { PageBaseLayout } from 'app/shared/layouts';
 
 export const PageExit = () => {
   return (
-    <Box padding={2}>
-      <Typography variant="h4">Exit</Typography>
-    </Box>
+    <PageBaseLayout title="Sair">
+      <Typography>
+        Essa é a página de sair do <strong>App</strong>.
+      </Typography>
+    </PageBaseLayout>
   );
 };

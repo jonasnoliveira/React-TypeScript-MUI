@@ -11,7 +11,7 @@ import {
   useTheme,
 } from '@mui/material';
 
-import { DarkMode, ExitToApp, Home } from '@mui/icons-material';
+import { DarkMode } from '@mui/icons-material';
 
 import { IChildren, IListItemLinkProps } from 'app/shared/interfaces';
 import { useAppDrawerContext, useAppThemeContext } from 'app/shared/contexts';

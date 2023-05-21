@@ -22,12 +22,12 @@ export const PageBaseLayout: React.FC<IPageBaseLayoutInterfaces> = ({
   return (
     <Box
       height="100%"
+      padding={1}
       display="flex"
       flexDirection="column"
       gap={1}
     >
       <Box
-        padding={1}
         display="flex"
         alignItems="center"
         height={theme.spacing(smDown ? 6 : mdDown ? 8 : 12)}

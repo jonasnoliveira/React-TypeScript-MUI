@@ -16,7 +16,7 @@ export const AppRoutes = () => {
         children: <Home />,
       },
       {
-        label: 'Exit',
+        label: 'Sair',
         to: '/sair',
         children: <ExitToApp />,
       },

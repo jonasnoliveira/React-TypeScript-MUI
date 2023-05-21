@@ -89,7 +89,6 @@ export const DetailTools: React.FC<IDetailTools> = ({
           Voltar
         </Button>
       )}
-      Tolls
     </Box>
   );
 };

@@ -1,5 +1,5 @@
-import { Box, Button } from '@mui/material';
-import { DetailTools, Toolbar } from 'app/shared/components';
+import { Typography } from '@mui/material';
+import { DetailTools } from 'app/shared/components';
 import { useAppDrawerContext, useAppThemeContext } from 'app/shared/contexts';
 import { PageBaseLayout } from 'app/shared/layouts';
 
@@ -12,7 +12,9 @@ export const PageDashboard = () => {
       title="Página inicial"
       toolbar={<DetailTools />}
     >
-      Test
+      <Typography>
+        Essa é a página inicial do <strong>App</strong>.
+      </Typography>
     </PageBaseLayout>
   );
 };
