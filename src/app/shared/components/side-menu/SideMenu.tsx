@@ -11,10 +11,10 @@ import {
   useTheme,
 } from '@mui/material';
 
-import { ExitToApp, Home } from '@mui/icons-material';
+import { DarkMode, ExitToApp, Home } from '@mui/icons-material';
 
 import { IChildren, IListItemLinkProps } from 'app/shared/interfaces';
-import { useAppDrawerContext } from 'app/shared/contexts';
+import { useAppDrawerContext, useAppThemeContext } from 'app/shared/contexts';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 
 const ListItemLink: React.FC<IListItemLinkProps> = ({
@@ -49,6 +49,7 @@ export const SideMenu: React.FC<IChildren> = ({ children }) => {
 
   const { isDrawerOpen, toggleDrawerOpen, drawerOptions } =
     useAppDrawerContext();
+  const { toggleTheme } = useAppThemeContext();
 
   return (
     <>
@@ -90,6 +91,17 @@ export const SideMenu: React.FC<IChildren> = ({ children }) => {
                   {drawerOption.children}
                 </ListItemLink>
               ))}
+            </List>
+          </Box>
+
+          <Box>
+            <List component="nav">
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemIcon>
+                  <DarkMode />
+                </ListItemIcon>
+                <ListItemText primary="Alternar Tema" />
+              </ListItemButton>
             </List>
           </Box>
         </Box>

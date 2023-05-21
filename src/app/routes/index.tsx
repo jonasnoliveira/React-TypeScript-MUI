@@ -6,7 +6,7 @@ import { useAppDrawerContext } from 'app/shared/contexts';
 import { ExitToApp, Home } from '@mui/icons-material';
 
 export const AppRoutes = () => {
-  const { toggleDrawerOpen, setDrawerOptions } = useAppDrawerContext();
+  const { setDrawerOptions } = useAppDrawerContext();
 
   useEffect(() => {
     setDrawerOptions([
