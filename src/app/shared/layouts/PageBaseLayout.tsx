@@ -22,7 +22,7 @@ export const PageBaseLayout: React.FC<IPageBaseLayoutInterfaces> = ({
   return (
     <Box
       height="100%"
-      padding={1}
+      paddingLeft={1}
       display="flex"
       flexDirection="column"
       gap={1}

@@ -7,6 +7,12 @@ export interface IDetailTools {
   showSaveButton?: boolean;
   showSaveAndCloseButton?: boolean;
 
+  showNewButtonLoading?: boolean;
+  showBackButtonLoading?: boolean;
+  showDeleteButtonLoading?: boolean;
+  showSaveButtonLoading?: boolean;
+  showSaveAndCloseButtonLoading?: boolean;
+
   whenClickingOnNew?: () => void;
   whenClickingBack?: () => void;
   whenClickingDelete?: () => void;

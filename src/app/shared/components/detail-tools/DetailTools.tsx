@@ -4,6 +4,8 @@ import {
   Button,
   Divider,
   Paper,
+  Skeleton,
+  Typography,
   useMediaQuery,
   useTheme,
 } from '@mui/material';
@@ -16,7 +18,13 @@ export const DetailTools: React.FC<IDetailTools> = ({
   showBackButton = true,
   showDeleteButton = true,
   showSaveButton = true,
-  showSaveAndCloseButton = false,
+  showSaveAndCloseButton = true,
+
+  showNewButtonLoading = false,
+  showBackButtonLoading = false,
+  showDeleteButtonLoading = false,
+  showSaveButtonLoading = false,
+  showSaveAndCloseButtonLoading = false,
 
   whenClickingOnNew,
   whenClickingBack,
@@ -38,7 +46,7 @@ export const DetailTools: React.FC<IDetailTools> = ({
       height={theme.spacing(5)}
       component={Paper}
     >
-      {showSaveButton && (
+      {showSaveButton && !showSaveButtonLoading && (
         <Button
           color="primary"
           disableElevation
@@ -47,10 +55,25 @@ export const DetailTools: React.FC<IDetailTools> = ({
           onClick={whenClickingSave}
           startIcon={<Save />}
         >
-          Salvar
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            Salvar
+          </Typography>
         </Button>
       )}
-      {showSaveAndCloseButton && (
+
+      {showSaveButtonLoading && (
+        <Skeleton
+          height={65}
+          width={110}
+        />
+      )}
+
+      {showSaveAndCloseButton && !showSaveButtonLoading && (
         <Button
           color="primary"
           disableElevation
@@ -59,10 +82,25 @@ export const DetailTools: React.FC<IDetailTools> = ({
           onClick={clickingOnSaveAndClose}
           startIcon={<Save />}
         >
-          Salvar e Voltar
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            Salvar e Voltar
+          </Typography>
         </Button>
       )}
-      {showDeleteButton && (
+
+      {showSaveAndCloseButtonLoading && (
+        <Skeleton
+          height={65}
+          width={185}
+        />
+      )}
+
+      {showDeleteButton && !showSaveButtonLoading && (
         <Button
           color="primary"
           disableElevation
@@ -71,10 +109,25 @@ export const DetailTools: React.FC<IDetailTools> = ({
           onClick={whenClickingDelete}
           startIcon={<Delete />}
         >
-          Apagar
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            Apagar
+          </Typography>
         </Button>
       )}
-      {showNewButton && (
+
+      {showDeleteButtonLoading && (
+        <Skeleton
+          height={65}
+          width={110}
+        />
+      )}
+
+      {showNewButton && !showSaveButtonLoading && (
         <Button
           color="primary"
           disableElevation
@@ -83,14 +136,29 @@ export const DetailTools: React.FC<IDetailTools> = ({
           onClick={whenClickingOnNew}
           startIcon={<Add />}
         >
-          {newButtonText}
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            {newButtonText}
+          </Typography>
         </Button>
       )}
+
+      {showNewButtonLoading && (
+        <Skeleton
+          height={65}
+          width={110}
+        />
+      )}
+
       <Divider
         variant="middle"
         orientation="vertical"
       />
-      {showBackButton && (
+      {showBackButton && !showSaveButtonLoading && (
         <Button
           color="primary"
           disableElevation
@@ -99,8 +167,22 @@ export const DetailTools: React.FC<IDetailTools> = ({
           onClick={whenClickingBack}
           startIcon={<ArrowBack />}
         >
-          Voltar
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            Voltar
+          </Typography>
         </Button>
+      )}
+
+      {showBackButtonLoading && (
+        <Skeleton
+          height={65}
+          width={110}
+        />
       )}
     </Box>
   );
