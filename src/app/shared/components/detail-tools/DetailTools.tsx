@@ -34,6 +34,7 @@ export const DetailTools: React.FC<IDetailTools> = ({
 }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Box
@@ -73,27 +74,30 @@ export const DetailTools: React.FC<IDetailTools> = ({
         />
       )}
 
-      {showSaveAndCloseButton && !showSaveButtonLoading && (
-        <Button
-          color="primary"
-          disableElevation
-          variant="outlined"
-          size={smDown ? 'small' : 'medium'}
-          onClick={clickingOnSaveAndClose}
-          startIcon={<Save />}
-        >
-          <Typography
-            variant="button"
-            whiteSpace="nowrap"
-            textOverflow="ellipsis"
-            overflow="hidden"
+      {showSaveAndCloseButton &&
+        !showSaveButtonLoading &&
+        !smDown &&
+        !mdDown && (
+          <Button
+            color="primary"
+            disableElevation
+            variant="outlined"
+            size={smDown ? 'small' : 'medium'}
+            onClick={clickingOnSaveAndClose}
+            startIcon={<Save />}
           >
-            Salvar e Voltar
-          </Typography>
-        </Button>
-      )}
+            <Typography
+              variant="button"
+              whiteSpace="nowrap"
+              textOverflow="ellipsis"
+              overflow="hidden"
+            >
+              Salvar e Voltar
+            </Typography>
+          </Button>
+        )}
 
-      {showSaveAndCloseButtonLoading && (
+      {showSaveAndCloseButtonLoading && !smDown && !mdDown && (
         <Skeleton
           height={65}
           width={185}
@@ -127,7 +131,7 @@ export const DetailTools: React.FC<IDetailTools> = ({
         />
       )}
 
-      {showNewButton && !showSaveButtonLoading && (
+      {showNewButton && !showSaveButtonLoading && smDown && (
         <Button
           color="primary"
           disableElevation
@@ -147,17 +151,24 @@ export const DetailTools: React.FC<IDetailTools> = ({
         </Button>
       )}
 
-      {showNewButtonLoading && (
+      {showNewButtonLoading && smDown && (
         <Skeleton
           height={65}
           width={110}
         />
       )}
 
-      <Divider
-        variant="middle"
-        orientation="vertical"
-      />
+      {showBackButton &&
+        (showNewButton ||
+          showDeleteButton ||
+          showSaveButton ||
+          showSaveAndCloseButton) && (
+          <Divider
+            variant="middle"
+            orientation="vertical"
+          />
+        )}
+
       {showBackButton && !showSaveButtonLoading && (
         <Button
           color="primary"

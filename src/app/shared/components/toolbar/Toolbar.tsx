@@ -1,5 +1,6 @@
 import { Add } from '@mui/icons-material';
 import { Box, Button, Icon, Paper, TextField, useTheme } from '@mui/material';
+import { Enviroment } from 'app/shared/environments';
 import { IToolbar } from 'app/shared/interfaces';
 
 export const Toolbar: React.FC<IToolbar> = ({
@@ -27,7 +28,7 @@ export const Toolbar: React.FC<IToolbar> = ({
         <TextField
           size="small"
           value={searchText}
-          placeholder="Pesquisar ..."
+          placeholder={Enviroment.SEARCH_INPUT}
           onChange={(e) => whenChangingSearchText?.(e.target.value)}
         />
       )}
