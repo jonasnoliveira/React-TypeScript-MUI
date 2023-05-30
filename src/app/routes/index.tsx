@@ -1,9 +1,15 @@
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { PageDashboard, PageExit } from 'app/pages';
+import { PageDashboard, PageExit, PeopleListing } from 'app/pages';
 import { useAppDrawerContext } from 'app/shared/contexts';
-import { ExitToApp, Home } from '@mui/icons-material';
+import {
+  ExitToApp,
+  Home,
+  LocalActivity,
+  LocationCity,
+  People,
+} from '@mui/icons-material';
 
 export const AppRoutes = () => {
   const { setDrawerOptions } = useAppDrawerContext();
@@ -14,6 +20,11 @@ export const AppRoutes = () => {
         label: 'Página inicial',
         to: '/pagina-inicial',
         children: <Home />,
+      },
+      {
+        label: 'Pessoas',
+        to: '/pessoas',
+        children: <People />,
       },
       {
         label: 'Sair',
@@ -32,6 +43,10 @@ export const AppRoutes = () => {
       <Route
         path="/sair"
         element={<PageExit />}
+      />
+      <Route
+        path="/pessoas"
+        element={<PeopleListing />}
       />
 
       <Route

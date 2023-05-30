@@ -92,7 +92,7 @@ export const DetailTools: React.FC<IDetailTools> = ({
               textOverflow="ellipsis"
               overflow="hidden"
             >
-              Salvar e Voltar
+              Salvar e Fechar
             </Typography>
           </Button>
         )}
