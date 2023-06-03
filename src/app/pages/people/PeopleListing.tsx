@@ -1,6 +1,9 @@
+import { Delete, Edit } from '@mui/icons-material';
 import {
   Box,
+  IconButton,
   LinearProgress,
+  Pagination,
   Paper,
   Table,
   TableBody,
@@ -9,7 +12,6 @@ import {
   TableFooter,
   TableHead,
   TableRow,
-  fabClasses,
 } from '@mui/material';
 import { Toolbar } from 'app/shared/components';
 import { Enviroment } from 'app/shared/environments';
@@ -18,11 +20,12 @@ import { IListPerson } from 'app/shared/interfaces';
 import { PageBaseLayout } from 'app/shared/layouts';
 import { PeopleService } from 'app/shared/services';
 import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export const PeopleListing = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { debounce } = useDebounce();
+  const navigate = useNavigate();
 
   const [totalCount, setTotalCount] = useState(0);
   const [rows, setRows] = useState<IListPerson[]>([]);
@@ -32,11 +35,15 @@ export const PeopleListing = () => {
     return searchParams?.get('search') || '';
   }, [searchParams]);
 
+  const page = useMemo(() => {
+    return Number(searchParams?.get('page') || '1');
+  }, [searchParams]);
+
   useEffect(() => {
     setIsLoading(true);
 
     debounce(() => {
-      PeopleService.getAll(1, search).then((result) => {
+      PeopleService.getAll(page, search).then((result) => {
         setIsLoading(false);
 
         if (result instanceof Error) {
@@ -49,7 +56,19 @@ export const PeopleListing = () => {
         setRows(result.data);
       });
     });
-  }, [search]);
+  }, [search, page]);
+
+  const handleDelete = (id: number) => {
+    if (window.confirm('Deseja realmente apagar?') === true) {
+      PeopleService.deleteById(id).then((result) => {
+        if (result instanceof Error) {
+          return alert(result.message);
+        }
+        setRows((oldRows) => [...oldRows.filter((oldRow) => oldRow.id !== id)]);
+        alert('Registro apagado com sucesso!');
+      });
+    }
+  };
 
   return (
     <PageBaseLayout
@@ -59,8 +78,9 @@ export const PeopleListing = () => {
           showSearchInput
           newButtonText="Nova"
           searchText={search}
+          WhenClickingOnNew={() => navigate('/pessoas/detalhe/nova')}
           whenChangingSearchText={(texto) =>
-            setSearchParams({ search: texto }, { replace: true })
+            setSearchParams({ search: texto, page: '1' }, { replace: true })
           }
         />
       }
@@ -82,7 +102,20 @@ export const PeopleListing = () => {
             <TableBody>
               {rows.map((row) => (
                 <TableRow key={row.id}>
-                  <TableCell>Ações</TableCell>
+                  <TableCell align="left">
+                    <IconButton
+                      size="small"
+                      onClick={() => navigate(`/pessoas/detalhe/${row.id}`)}
+                    >
+                      <Edit />
+                    </IconButton>
+                    <IconButton
+                      size="small"
+                      onClick={() => handleDelete(row.id)}
+                    >
+                      <Delete />
+                    </IconButton>
+                  </TableCell>
                   <TableCell>{row.fullName}</TableCell>
                   <TableCell>{row.email}</TableCell>
                 </TableRow>
@@ -96,6 +129,22 @@ export const PeopleListing = () => {
                 <TableRow>
                   <TableCell colSpan={3}>
                     <LinearProgress variant="indeterminate" />
+                  </TableCell>
+                </TableRow>
+              )}
+              {totalCount > 0 && totalCount > 5 && (
+                <TableRow>
+                  <TableCell colSpan={3}>
+                    <Pagination
+                      page={page}
+                      count={Math.ceil(totalCount / 5)}
+                      onChange={(e, newPage) =>
+                        setSearchParams(
+                          { search, page: newPage.toString() },
+                          { replace: true }
+                        )
+                      }
+                    />
                   </TableCell>
                 </TableRow>
               )}

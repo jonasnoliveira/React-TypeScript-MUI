@@ -1,7 +1,12 @@
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { PageDashboard, PageExit, PeopleListing } from 'app/pages';
+import {
+  PageDashboard,
+  PageExit,
+  PeopleDetail,
+  PeopleListing,
+} from 'app/pages';
 import { useAppDrawerContext } from 'app/shared/contexts';
 import {
   ExitToApp,
@@ -10,6 +15,7 @@ import {
   LocationCity,
   People,
 } from '@mui/icons-material';
+import { Typography } from '@mui/material';
 
 export const AppRoutes = () => {
   const { setDrawerOptions } = useAppDrawerContext();
@@ -44,9 +50,14 @@ export const AppRoutes = () => {
         path="/sair"
         element={<PageExit />}
       />
+
       <Route
         path="/pessoas"
         element={<PeopleListing />}
+      />
+      <Route
+        path="/pessoas/detalhe/:id"
+        element={<PeopleDetail />}
       />
 
       <Route

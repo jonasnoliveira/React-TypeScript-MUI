@@ -7,14 +7,14 @@ const getAll = async (
   filter = ''
 ): Promise<TPeopleWithTotalCount | Error> => {
   try {
-    const relativeURL = `/people?_page=${page}_limit=${Enviroment.LINES_LIMIT}&fullName_like=${filter}`;
+    const relativeURL = `/people?_page=${page}_limit=${5}&fullName_like=${filter}`;
 
     const { data, headers } = await Api.get(relativeURL);
 
     if (data) {
       return {
         data,
-        totalCount: Number(headers['x-total-count'] || Enviroment.LINES_LIMIT),
+        totalCount: Number(headers['x-total-count'] || 5),
       };
     }
 
