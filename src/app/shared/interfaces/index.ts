@@ -6,3 +6,4 @@ export * from './PageBaseLayoutInterfaces';
 export * from './ToolbarInterfaces';
 export * from './DetailToolsInterfaces';
 export * from './PeopleInterfaces';
+export * from './VTextFieldInterfaces';

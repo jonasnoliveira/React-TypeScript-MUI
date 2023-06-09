@@ -14,7 +14,7 @@ import {
   TableRow,
 } from '@mui/material';
 import { Toolbar } from 'app/shared/components';
-import { Enviroment } from 'app/shared/environments';
+import { Enviroments } from 'app/shared/environments';
 import { useDebounce } from 'app/shared/hooks';
 import { IListPerson } from 'app/shared/interfaces';
 import { PageBaseLayout } from 'app/shared/layouts';
@@ -32,11 +32,11 @@ export const PeopleListing = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const search = useMemo(() => {
-    return searchParams?.get('search') || '';
+    return searchParams.get('search') || '';
   }, [searchParams]);
 
   const page = useMemo(() => {
-    return Number(searchParams?.get('page') || '1');
+    return Number(searchParams.get('page') || '1');
   }, [searchParams]);
 
   useEffect(() => {
@@ -94,15 +94,27 @@ export const PeopleListing = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Ações</TableCell>
                 <TableCell>Nome completo</TableCell>
                 <TableCell>Email</TableCell>
+                <TableCell align="center">Idade</TableCell>
+                <TableCell
+                  width={180}
+                  align="center"
+                >
+                  Ações
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {rows.map((row) => (
                 <TableRow key={row.id}>
-                  <TableCell align="left">
+                  <TableCell>{row.fullName}</TableCell>
+                  <TableCell>{row.email}</TableCell>
+                  <TableCell align="center">{row.age}</TableCell>
+                  <TableCell
+                    width={120}
+                    align="center"
+                  >
                     <IconButton
                       size="small"
                       onClick={() => navigate(`/pessoas/detalhe/${row.id}`)}
@@ -116,13 +128,11 @@ export const PeopleListing = () => {
                       <Delete />
                     </IconButton>
                   </TableCell>
-                  <TableCell>{row.fullName}</TableCell>
-                  <TableCell>{row.email}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
             {totalCount === 0 && !isLoading && (
-              <caption>{Enviroment.LISTING_EMPTY}</caption>
+              <caption>{Enviroments.LISTING_EMPTY}</caption>
             )}
             <TableFooter>
               {isLoading && (
@@ -137,7 +147,7 @@ export const PeopleListing = () => {
                   <TableCell colSpan={3}>
                     <Pagination
                       page={page}
-                      count={Math.ceil(totalCount / 5)}
+                      count={Math.ceil(totalCount / Enviroments.LINES_LIMIT)}
                       onChange={(e, newPage) =>
                         setSearchParams(
                           { search, page: newPage.toString() },

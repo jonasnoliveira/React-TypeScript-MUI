@@ -8,7 +8,7 @@ export const PageDashboard = () => {
       title="Página inicial"
       toolbar={<DetailTools />}
     >
-      <Typography>
+      <Typography margin={1}>
         Essa é a página inicial do <strong>App</strong>.
       </Typography>
     </PageBaseLayout>

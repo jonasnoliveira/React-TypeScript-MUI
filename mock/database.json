@@ -2,87 +2,101 @@
   "people": [
     {
       "id": 1,
-      "cidadeId": 1,
       "fullName": "Jonas Oliveira",
-      "email": "jonasnoliveirabr@gmail.com"
+      "email": "jonasnoliveirabr@gmail.com",
+      "cityId": 1,
+      "age": "19"
     },
     {
       "id": 2,
-      "cidadeId": 1,
-      "fullName": "Elias Oliveira",
-      "email": "eliasdeoliveira@gmail.com"
+      "fullName": "Elias de Oliveira",
+      "email": "eliasdeoliveira@gmail.com",
+      "cityId": 1,
+      "age": "26"
     },
     {
       "id": 3,
-      "cidadeId": 1,
-      "fullName": "Elionardo Oliveira",
-      "email": "elionardooliveira@gamil.com"
+      "fullName": "Elionardo de Oliveira",
+      "email": "elionardooliveira@gamil.com",
+      "cityId": 1,
+      "age": "46"
     },
     {
       "id": 4,
-      "cidadeId": 1,
-      "fullName": "João Jesus",
-      "email": "teste@teste.com"
+      "fullName": "João",
+      "email": "teste@teste.com",
+      "cityId": 1,
+      "age": 18
     },
     {
       "id": 5,
-      "cidadeId": 1,
+      "cityId": 1,
       "fullName": "Bruna Oliveira",
-      "email": "Bruh@gmail.com"
-    },
-    {
-      "id": 6,
-      "cidadeId": 2,
-      "fullName": "João Silva",
-      "email": "joao.silva@gmail.com"
-    },
-    {
-      "id": 7,
-      "cidadeId": 3,
-      "fullName": "Maria Santos",
-      "email": "maria.santos@gmail.com"
-    },
-    {
-      "id": 9,
-      "cidadeId": 2,
-      "fullName": "Carla Ferreira",
-      "email": "carla.ferreira@gmail.com"
+      "email": "Bruh@gmail.com",
+      "age": 18
     },
     {
       "id": 10,
-      "cidadeId": 3,
+      "cityId": 3,
       "fullName": "Rafaela Sousa",
-      "email": "rafaela.sousa@gmail.com"
-    },
-    {
-      "id": 11,
-      "cidadeId": 1,
-      "fullName": "Gustavo Lima",
-      "email": "gustavo.lima@gmail.com"
+      "email": "rafaela.sousa@gmail.com",
+      "age": 18
     },
     {
       "id": 12,
-      "cidadeId": 2,
+      "cityId": 2,
       "fullName": "Ana Rodrigues",
-      "email": "ana.rodrigues@gmail.com"
+      "email": "ana.rodrigues@gmail.com",
+      "age": 18
     },
     {
       "id": 13,
-      "cidadeId": 3,
+      "cityId": 3,
       "fullName": "Mariana Costa",
-      "email": "mariana.costa@gmail.com"
+      "email": "mariana.costa@gmail.com",
+      "age": 18
     },
     {
       "id": 14,
-      "cidadeId": 1,
+      "cityId": 1,
       "fullName": "Lucas Santos",
-      "email": "lucas.santos@gmail.com"
+      "email": "lucas.santos@gmail.com",
+      "age": 18
     },
     {
       "id": 15,
-      "cidadeId": 2,
+      "cityId": 2,
       "fullName": "Amanda Ferreira",
-      "email": "amanda.ferreira@gmail.com"
+      "email": "amanda.ferreira@gmail.com",
+      "age": 18
+    },
+    {
+      "id": 16,
+      "fullName": "Bruna Oliveira",
+      "email": "BruOliveira@gmail.com",
+      "cityId": "0206",
+      "age": 18
+    },
+    {
+      "id": 18,
+      "fullName": "Isis Oliveira",
+      "email": "isisoliveira@gmail.com",
+      "cityId": "1",
+      "age": 18
+    },
+    {
+      "id": 19,
+      "fullName": "Léozinho",
+      "email": "leogay@gmail.com",
+      "cityId": "24",
+      "age": 18
+    },
+    {
+      "id": 20,
+      "fullName": "Gustavo gay",
+      "email": "gus@gmail.gordo",
+      "cityId": "24",
+      "age": 18
     }
   ]
 }

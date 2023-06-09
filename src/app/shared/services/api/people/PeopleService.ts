@@ -1,4 +1,4 @@
-import { Enviroment } from 'app/shared/environments';
+import { Enviroments } from 'app/shared/environments';
 import { Api } from '../axios-conig';
 import { IDetailPerson, TPeopleWithTotalCount } from 'app/shared/interfaces';
 
@@ -7,14 +7,14 @@ const getAll = async (
   filter = ''
 ): Promise<TPeopleWithTotalCount | Error> => {
   try {
-    const relativeURL = `/people?_page=${page}_limit=${5}&fullName_like=${filter}`;
+    const relativeURL = `/people?_page=${page}&_limit=${Enviroments.LINES_LIMIT}&fullName_like=${filter}`;
 
     const { data, headers } = await Api.get(relativeURL);
 
     if (data) {
       return {
         data,
-        totalCount: Number(headers['x-total-count'] || 5),
+        totalCount: Number(headers['x-total-count'] || Enviroments.LINES_LIMIT),
       };
     }
 
@@ -68,9 +68,9 @@ const updateById = async (
   dados: IDetailPerson
 ): Promise<void | Error> => {
   try {
-    const { data } = await Api.put<IDetailPerson>(`/people/${id}`, dados);
+    await Api.put(`/people/${id}`, dados);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return new Error(
       (error as { message: string }).message || 'Erro ao atualizar o registro.'
     );

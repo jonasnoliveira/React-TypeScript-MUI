@@ -43,6 +43,7 @@ export const PageBaseLayout: React.FC<IPageBaseLayoutInterfaces> = ({
           whiteSpace="nowrap"
           textOverflow="ellipsis"
           variant={smDown ? 'h5' : mdDown ? 'h4' : 'h3'}
+          margin={1}
         >
           {title}
         </Typography>
